@@ -12,13 +12,13 @@ const Navigation = () => {
   return (
     <nav>
       <div tw='container mx-auto px-6 py-2 flex flex-wrap justify-between items-center'>
-        <Link to='/' tw='font-bold text-2xl lg:text-4xl'>
+        <Link to='/' tw='font-bold text-xl md:text-2xl lg:text-4xl flex-1'>
           Nieuwenhuis IT Consulting
         </Link>
-        <div tw='block lg:hidden'>
+        <div tw='block lg:hidden flex-initial'>
           <button
             onClick={handleClick}
-            tw='flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-800 appearance-none focus:outline-none'
+            tw='flex items-center px-5 py-4 border rounded text-gray-500 border-gray-600 hover:text-gray-800 appearance-none focus:outline-none'
           >
             <svg
               tw='fill-current h-3 w-3'
