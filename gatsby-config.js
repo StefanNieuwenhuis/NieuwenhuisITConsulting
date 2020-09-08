@@ -1,8 +1,18 @@
 module.exports = {
   siteMetadata: {
-    title: `Front End Developer | Stefan Nieuwenhuis`,
-    description: `I’m a freelance Frontend Developer specializing in React, Angular and Web Components`,
-    author: '@stefannhs',
+    title: `Freelance Front End Development | Nieuwenhuis IT Consulting`,
+    description: `I’m a freelance Front End Developer specializing in React, Angular, Web Components and in building a web interface with better user experiences.`,
+    author: 'Stefan Nieuwenhuis',
+    keywords: [
+      'React',
+      'Angular',
+      'Web Components',
+      'Freelance',
+      'Front End',
+      'Web Development',
+      'Web Design',
+    ],
+    siteUrl: 'https://stefannieuwenhuis.dev',
     routes: [
       {
         name: 'Home',
@@ -38,5 +48,6 @@ module.exports = {
         name: `posts`,
       },
     },
+    `gatsby-plugin-react-helmet`,
   ],
 };
