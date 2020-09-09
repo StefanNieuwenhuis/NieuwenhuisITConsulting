@@ -35,7 +35,7 @@ const HomeContainer = () => (
         <div tw='flex items-center flex-wrap mb-20'>
           <div tw='w-full md:w-1/2'>
             <CustomH4>Web Design and Development</CustomH4>
-            <p tw='text-gray-600 mb-8'>
+            <p tw='text-gray-900 mb-8'>
               I build websites that help you improve your brand and business
               needs. They are lightning fast, SEO ready, and mobile responsive
               on the fly.
@@ -54,7 +54,7 @@ const HomeContainer = () => (
           </div>
           <div tw='w-full md:w-1/2 md:pl-10 order-first md:order-1'>
             <CustomH4>Public Speaking</CustomH4>
-            <p tw='text-gray-600 mb-8'>
+            <p tw='text-gray-900 mb-8'>
               I give talks on Enterprise Applications, Microservices
               Architecture, Micro Front Ends, JavaScript Frameworks (Angular &
               React) and Design Systems.
@@ -64,10 +64,10 @@ const HomeContainer = () => (
         <div tw='flex items-center flex-wrap mb-20'>
           <div tw='w-full md:w-1/2'>
             <CustomH4>Technical Writing</CustomH4>
-            <p tw='text-gray-600 mb-8'>
+            <p tw='text-gray-900 mb-8'>
               I write articles on Web Components, JavaScript Frameworks, Front
               End Architecture and Design Systems. Check out my{' '}
-              <Link to='/blog' style={{ color: '#667eea' }}>
+              <Link to='/blog' style={{ color: '#2844bf' }}>
                 blog
               </Link>{' '}
               to learn more.
