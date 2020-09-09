@@ -52,7 +52,7 @@ const HomeContainer = () => (
           <div tw='w-full md:w-1/2'>
             <img src={PublicSpeakingIllustration} alt='Public Speaking' />
           </div>
-          <div tw='w-full md:w-1/2 md:pl-10'>
+          <div tw='w-full md:w-1/2 md:pl-10 order-first md:order-1'>
             <CustomH4>Public Speaking</CustomH4>
             <p tw='text-gray-600 mb-8'>
               I give talks on Enterprise Applications, Microservices
