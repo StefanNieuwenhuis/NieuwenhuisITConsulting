@@ -11,7 +11,7 @@ import FormSubmittingIllustration from '../../pixeltrue-time-management-1.svg';
 const FormSuccess = () => (
   <>
     <div tw='w-full md:w-1/2'>
-      <img src={FormSuccessIllustration} />
+      <img src={FormSuccessIllustration} alt="Let's get in touch" />
     </div>
     <div tw='w-full md:w-1/2 order-first md:order-1 text-center'>
       <CustomH2 tw='mb-6'>Thank you</CustomH2>
@@ -120,11 +120,11 @@ const ContactForm = () => {
                     placeholder='How can I help you?'
                   ></textarea>
                 </div>
-                <div>
+                <div tw='text-right'>
                   <button
                     type='submit'
                     style={{ backgroundColor: '#667eea' }}
-                    tw='text-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider'
+                    tw='w-full md:w-auto text-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider'
                     disabled={serverState.submitting}
                   >
                     Send

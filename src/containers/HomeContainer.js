@@ -1,14 +1,15 @@
 import React from 'react';
 import tw from 'twin.macro';
 
-import { Link } from 'gatsby';
-
-import Hero from '../components/Hero';
+import Layout from '../components/Layout';
 import CustomContainer from '../components/CustomContainer';
+import Hero from '../components/Hero';
+import { Link } from 'gatsby';
 import { CustomH2, CustomH3, CustomH4 } from '../components/CustomHeadings';
 
-import WebDesignAndDevelopment from '../../pixeltrue-web-development-1.svg';
-import Layout from '../components/Layout';
+import WebDesignAndDevelopmentIllustration from '../../pixeltrue-web-development-1.svg';
+import PublicSpeakingIllustration from '../../pixeltrue-space-discovery-1.svg';
+import TechWritingIllustration from '../../pixeltrue-support-1.svg';
 
 const CtaLink = tw(
   Link
@@ -22,8 +23,8 @@ const HomeContainer = () => (
         <CustomH3 tw='mb-8 text-gray-200'>
           I’m a freelance Front End Developer specializing in{' '}
           <strong>React</strong>, <strong>Angular</strong>,{' '}
-          <strong>Web Components</strong> and in building a web interface with
-          better user experiences. Do you need a website?
+          <strong>Web Components</strong> and building web interfaces with a
+          great user experience. Do you need a website?
         </CustomH3>
         <CtaLink to='/services'>See my services</CtaLink>
       </CustomContainer>
@@ -42,9 +43,38 @@ const HomeContainer = () => (
           </div>
           <div tw='w-full md:w-1/2'>
             <img
-              src={WebDesignAndDevelopment}
+              src={WebDesignAndDevelopmentIllustration}
               alt='Web Design and Development'
             />
+          </div>
+        </div>
+        <div tw='flex items-center flex-wrap mb-20'>
+          <div tw='w-full md:w-1/2'>
+            <img src={PublicSpeakingIllustration} alt='Public Speaking' />
+          </div>
+          <div tw='w-full md:w-1/2 md:pl-10'>
+            <CustomH4>Public Speaking</CustomH4>
+            <p tw='text-gray-600 mb-8'>
+              I give talks on Enterprise Applications, Microservices
+              Architecture, Micro Front Ends, JavaScript Frameworks (Angular &
+              React) and Design Systems.
+            </p>
+          </div>
+        </div>
+        <div tw='flex items-center flex-wrap mb-20'>
+          <div tw='w-full md:w-1/2'>
+            <CustomH4>Technical Writing</CustomH4>
+            <p tw='text-gray-600 mb-8'>
+              I write articles on Web Components, JavaScript Frameworks, Front
+              End Architecture and Design Systems. Check out my{' '}
+              <Link to='/blog' style={{ color: '#667eea' }}>
+                blog
+              </Link>{' '}
+              to learn more.
+            </p>
+          </div>
+          <div tw='w-full md:w-1/2'>
+            <img src={TechWritingIllustration} alt='Technical Writing' />
           </div>
         </div>
       </CustomContainer>

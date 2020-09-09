@@ -12,8 +12,8 @@ const Contact = () => (
     <SEO title='Contact' />
     <Hero>
       <CustomContainer>
-        <CustomH2 tw='mb-6 text-center text-white'>Let's talk</CustomH2>
-        <CustomH3 tw='my-4 mb-8 text-center text-white'>
+        <CustomH2 tw='mb-6 text-white'>Let's talk</CustomH2>
+        <CustomH3 tw='my-4 mb-8 text-white'>
           I would be happy to help you. Just send me a message about what I can
           do for you.
         </CustomH3>

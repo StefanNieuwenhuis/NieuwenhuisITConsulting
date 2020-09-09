@@ -6,9 +6,7 @@ const Footer = () => (
   <footer>
     <CustomContainer tw='pt-10 pb-6'>
       <div tw='w-full text-center'>
-        <h5 tw='mb-6'>
-          © 2020 Stefan Nieuwenhuis IT Consulting
-        </h5>
+        <p tw='mb-6'>© 2020 Stefan Nieuwenhuis IT Consulting</p>
       </div>
     </CustomContainer>
   </footer>

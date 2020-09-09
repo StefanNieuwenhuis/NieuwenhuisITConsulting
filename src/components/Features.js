@@ -14,7 +14,20 @@ const Features = () => (
       <div tw='flex items-center flex-wrap mb-20'>
         <div tw='w-full md:w-1/2'>
           <CustomH4>Web Design and Development</CustomH4>
-          <p tw='text-gray-600 mb-8'>
+          <p tw='mb-8'>
+            I build websites that help you improve your brand and business
+            needs. They are lightning fast, SEO ready, and mobile responsive on
+            the fly.
+          </p>
+        </div>
+        <div tw='w-full md:w-1/2'>
+          <img src={WebDesignAndDevelopment} alt='Web Design and Development' />
+        </div>
+      </div>
+      <div tw='flex items-center flex-wrap mb-20'>
+        <div tw='w-full md:w-1/2'>
+          <CustomH4>Public Speaking</CustomH4>
+          <p tw='mb-8'>
             I build websites that help you improve your brand and business
             needs. They are lightning fast, SEO ready, and mobile responsive on
             the fly.

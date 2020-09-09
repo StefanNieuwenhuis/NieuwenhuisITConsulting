@@ -30,12 +30,12 @@ const Navigation = () => {
             </svg>
           </button>
         </div>
-        <div css={[tw` w-full md:w-auto lg:block`, !navbarOpen && tw`hidden`]}>
-          <ul tw='inline-flex flex-col w-full md:w-auto lg:flex-row'>
+        <div css={[tw` w-full lg:w-auto lg:block`, !navbarOpen && tw`hidden`]}>
+          <ul tw='inline-flex flex-col w-full lg:w-auto lg:flex-row'>
             {routes.map(({ name, path }, idx) => (
               <li key={idx} tw='w-full md:w-auto'>
                 <Link
-                  tw='px-4 hover:text-gray-800 text-center md:text-left block'
+                  tw='px-4 py-2 hover:text-gray-800 text-center lg:text-left block'
                   activeStyle={{ fontWeight: 'bold' }}
                   to={path}
                 >
