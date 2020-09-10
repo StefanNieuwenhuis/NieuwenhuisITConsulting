@@ -94,7 +94,7 @@ const ContactForm = () => {
                 tw='text-red-600 mt-2 text-sm'
               />
             </div>
-
+            <div tw='mb-4' data-netlify-recaptcha='true'></div>
             <div tw='text-right'>
               <button
                 type='submit'
