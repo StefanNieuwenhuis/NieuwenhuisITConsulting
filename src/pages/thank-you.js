@@ -11,17 +11,17 @@ import ThankYouIllustration from '../../pixeltrue-sleeping-1.svg';
 const UnderConstruction = () => (
   <Layout>
     <SEO title='Thank You' />
-    <CustomContainer tw='py-20'>
+    <CustomContainer>
       <div tw='flex items-center flex-wrap'>
-        <div tw='w-full md:w-1/2'>
+        <div tw='w-full lg:w-1/2'>
           <img
             src={ThankYouIllustration}
             alt='Thank you for sending Stefan Nieuwenhuis a message'
           />
         </div>
-        <div tw='w-full md:w-1/2 text-center'>
+        <div tw='w-full lg:w-1/2 mt-4 lg:pl-10 text-center'>
           <CustomH2 tw='mb-8'>
-            Your message is sent successfully. We'll be in touch!
+            Your message has been sent successfully. We'll keep in touch!
           </CustomH2>
           <Link
             to='/'
