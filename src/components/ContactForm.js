@@ -30,14 +30,12 @@ const ContactForm = () => {
         initialValues={{ name: '', email: '', message: '' }}
         validationSchema={ContactFormSchema}
         onSubmit={(data) => {
-          console.log(data);
-
-          fetch('/', {
+          fetch(formEl.current.action, {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: encode({
               ...data,
-              'form-name': formEl.current.name,
+              'form-name': formEl.current.getAttribute('name'),
             }),
           })
             .then(() => navigate(formEl.current.action))
