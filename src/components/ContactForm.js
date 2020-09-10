@@ -18,12 +18,31 @@ const ContactFormSchema = Yup.object().shape({
 const ContactForm = () => {
   const formEl = useRef(null);
 
+  const encode = (data) =>
+    Object.keys(data)
+      .map((key) => `${encodeURIComponent(key)}=${encodeURI(data[key])}`)
+      .join('&');
+
   return (
     <>
       <CustomH2>Just say hi!</CustomH2>
       <Formik
         initialValues={{ name: '', email: '', message: '' }}
         validationSchema={ContactFormSchema}
+        onSubmit={(data) => {
+          console.log(data);
+
+          fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encode({
+              ...data,
+              'form-name': formEl.current.name,
+            }),
+          })
+            .then(() => navigate(formEl.current.action))
+            .catch((err) => console.error(err));
+        }}
       >
         {() => (
           <Form
@@ -31,12 +50,11 @@ const ContactForm = () => {
             name='Contact Form'
             method='POST'
             data-netlify='true'
-            data-netlify-recaptcha='true'
+            data-netlify-honeypot='bot-field'
             action='/thank-you'
           >
-            <label tw='hidden'>
-              Don’t fill this out if you're human: <input name='bot-field' />
-            </label>
+            <Field type='hidden' name='form-name' />
+            <Field type='hidden' name='bot-field' />
             <div tw='mb-4'>
               <label htmlFor='name' tw='block mb-2'>
                 Name
@@ -86,7 +104,6 @@ const ContactForm = () => {
                 tw='text-red-600 mt-2 text-sm'
               />
             </div>
-            <div tw='mb-4' data-netlify-recaptcha='true'></div>
             <div tw='text-right'>
               <button
                 type='submit'

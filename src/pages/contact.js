@@ -1,14 +1,13 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import tw from 'twin.macro';
-import axios from 'axios';
+
 import SEO from '../components/Seo';
 import Hero from '../components/Hero';
 
 import CustomContainer from '../components/CustomContainer';
 import { CustomH2, CustomH3 } from '../components/CustomHeadings';
 
-import { Formik, Form, Field, ErrorMessage } from 'formik';
 import ContactFormIllustration from '../../pixeltrue-support-1.svg';
 import ContactForm from '../components/ContactForm';
 
