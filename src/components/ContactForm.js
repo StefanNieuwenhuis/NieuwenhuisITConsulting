@@ -1,141 +1,128 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useRef } from 'react';
+import { navigate } from 'gatsby';
+import Recaptcha from 'react-google-recaptcha';
 import tw from 'twin.macro';
-import CustomContainer from './CustomContainer';
-import { CustomH2, CustomH3 } from './CustomHeadings';
-import { Link } from 'gatsby';
-import ContactFormIllustration from '../../pixeltrue-support-1.svg';
-import FormSuccessIllustration from '../../pixeltrue-sleeping-1.svg';
-import FormSubmittingIllustration from '../../pixeltrue-time-management-1.svg';
+import * as Yup from 'yup';
 
-const FormSuccess = () => (
-  <>
-    <div tw='w-full md:w-1/2'>
-      <img src={FormSuccessIllustration} alt="Let's get in touch" />
-    </div>
-    <div tw='w-full md:w-1/2 order-first md:order-1 text-center'>
-      <CustomH2 tw='mb-6'>Thank you</CustomH2>
-      <CustomH3 tw='my-4 mb-8'>
-        Your message is sent successfully. We'll be in touch!
-      </CustomH3>
-      <Link
-        to='/'
-        style={{ backgroundColor: '#667eea' }}
-        tw='text-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider'
-      >
-        Back to the Home Page
-      </Link>
-    </div>
-  </>
-);
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { CustomH2 } from './CustomHeadings';
 
-const FormSubmitting = () => (
-  <>
-    <div tw='w-full md:w-1/2'>
-      <img src={FormSubmittingIllustration} />
-    </div>
-    <div tw='w-full md:w-1/2 order-first md:order-1 text-center'>
-      <CustomH2 tw='mb-6'>Sending your message to HQ</CustomH2>
-    </div>
-  </>
-);
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+
+const ContactFormSchema = Yup.object().shape({
+  name: Yup.string().required('Please enter your name'),
+  email: Yup.string()
+    .email('Please enter a valid email address')
+    .required('Your email address is required to be able to contact you'),
+  message: Yup.string().required('Please let me know what I can do for you'),
+});
 
 const ContactForm = () => {
-  const [serverState, setServerState] = useState({
-    submitting: false,
-    status: null,
-  });
+  const recaptchaEl = useRef(null);
+  const formEl = useRef(null);
+  const [recaptcha, setRecaptcha] = useState({});
 
-  const handleServerResponse = (ok, msg, form) => {
-    setServerState({ ...serverState, status: { ok, msg } });
-
-    if (ok) {
-      form.reset();
-    }
-  };
-
-  const handleOnSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    setServerState({ submitting: true });
-
-    axios({
-      method: 'post',
-      url: 'https://getform.io/f/708a506e-8995-4032-a0a3-563dc403f1a0',
-      data: new FormData(form),
-      headers: { Accept: 'application/json' },
-    })
-      .then(() => handleServerResponse(true, 'Thanks!', form))
-      .catch((err) =>
-        handleServerResponse(false, err.response.data.error, form)
-      );
-  };
+  const handleRecaptcha = (value) =>
+    setRecaptcha({ 'g-recaptcha-response': value });
 
   return (
-    <CustomContainer tw='p-10'>
-      <div tw='flex items-center flex-wrap'>
-        {serverState.submitting && <FormSubmitting />}
-        {serverState.status && <FormSuccess />}
-        {serverState.status === null && (
-          <>
-            <div tw='w-full md:w-1/2'>
-              <img src={ContactFormIllustration} />
+    <>
+      <CustomH2>Just say hi!</CustomH2>
+      <Formik
+        initialValues={{ name: '', email: '', message: '' }}
+        validationSchema={ContactFormSchema}
+        onSubmit={(values) => {
+          fetch('/', {
+            method: 'POST',
+            body: { ...values, ...recaptcha },
+          })
+            .then(() => navigate(formEl.current.action))
+            .catch((err) => console.error(err));
+        }}
+      >
+        {() => (
+          <Form
+            ref={formEl}
+            name='Contact Form'
+            method='POST'
+            data-netlify='true'
+            data-netlify-recaptcha='true'
+            action='/thank-you'
+          >
+            <label tw='hidden'>
+              Don’t fill this out if you're human: <input name='bot-field' />
+            </label>
+            <div tw='mb-4'>
+              <label htmlFor='name' tw='block mb-2'>
+                Name
+              </label>
+              <Field
+                type='name'
+                name='name'
+                placeholder='What is your name?'
+                tw='shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
+              />
+              <ErrorMessage
+                name='name'
+                component='div'
+                tw='text-red-600 mt-2 text-sm'
+              />
             </div>
-            <div tw='w-full md:w-1/2 order-first md:order-1'>
-              <CustomH2>Just say hi!</CustomH2>
-              <form onSubmit={handleOnSubmit}>
-                <div tw='mb-4'>
-                  <label tw='block mb-2' htmlFor='name'>
-                    Name
-                  </label>
-                  <input
-                    type='text'
-                    id='name'
-                    name='name'
-                    tw='shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
-                    placeholder='What is your name?'
-                  />
-                </div>
-                <div tw='mb-4'>
-                  <label tw='block mb-2' htmlFor='email'>
-                    Email
-                  </label>
-                  <input
-                    type='email'
-                    id='email'
-                    name='email'
-                    tw='shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
-                    placeholder='What is your email address'
-                  />
-                </div>
-                <div tw='mb-4'>
-                  <label tw='block mb-2' htmlFor='message'>
-                    Message
-                  </label>
-                  <textarea
-                    id='message'
-                    name='message'
-                    rows='6'
-                    tw='shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
-                    placeholder='How can I help you?'
-                  ></textarea>
-                </div>
-                <div tw='text-right'>
-                  <button
-                    type='submit'
-                    style={{ backgroundColor: '#667eea' }}
-                    tw='w-full md:w-auto text-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider'
-                    disabled={serverState.submitting}
-                  >
-                    Send
-                  </button>
-                </div>
-              </form>
+            <div tw='mb-4'>
+              <label htmlFor='email' tw='block mb-2'>
+                Email
+              </label>
+              <Field
+                type='email'
+                name='email'
+                placeholder='What is your email address?'
+                tw='shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
+              />
+              <ErrorMessage
+                name='email'
+                component='div'
+                tw='text-red-600 mt-2 text-sm'
+              />
             </div>
-          </>
+            <div tw='mb-4'>
+              <label htmlFor='message' tw='block mb-2'>
+                Message
+              </label>
+              <Field
+                name='message'
+                as='textarea'
+                rows='6'
+                placeholder='How can I help you?'
+                tw='shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
+              />
+              <ErrorMessage
+                name='message'
+                component='div'
+                tw='text-red-600 mt-2 text-sm'
+              />
+            </div>
+            <div tw='mb-4'>
+              <Recaptcha
+                ref={recaptchaEl}
+                sitekey={RECAPTCHA_KEY}
+                onChange={handleRecaptcha}
+              />
+            </div>
+            <div tw='text-right'>
+              <button
+                type='submit'
+                style={{ backgroundColor: '#667eea' }}
+                css={[
+                  tw`w-full md:w-auto text-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider`,
+                ]}
+              >
+                Send
+              </button>
+            </div>
+          </Form>
         )}
-      </div>
-    </CustomContainer>
+      </Formik>
+    </>
   );
 };
 

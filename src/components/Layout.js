@@ -6,9 +6,9 @@ import Footer from './Footer';
 
 const Layout = ({ children }) => {
   return (
-    <div tw='text-gray-700 bg-white font-light'>
+    <div tw='text-gray-700 bg-white font-light h-screen flex flex-col'>
       <Header />
-      {children}
+      <main tw='flex-grow'>{children}</main>
       <Footer />
     </div>
   );
