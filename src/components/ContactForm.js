@@ -24,14 +24,6 @@ const ContactForm = () => {
       <Formik
         initialValues={{ name: '', email: '', message: '' }}
         validationSchema={ContactFormSchema}
-        onSubmit={(values) => {
-          fetch('/', {
-            method: 'POST',
-            body: { ...values },
-          })
-            .then(() => navigate(formEl.current.action))
-            .catch((err) => console.error(err));
-        }}
       >
         {() => (
           <Form
