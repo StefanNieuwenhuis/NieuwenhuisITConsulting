@@ -21,10 +21,9 @@ const HomeContainer = () => (
       <CustomContainer>
         <CustomH2 tw='mb-2 text-white'>Stefan Nieuwenhuis</CustomH2>
         <CustomH3 tw='mb-8 text-gray-200'>
-          I’m a freelance Front End Developer specializing in{' '}
-          <strong>React</strong>, <strong>Angular</strong>,{' '}
-          <strong>Web Components</strong> and building web interfaces with a
-          great user experience. Do you need a website?
+          I’m a Front End Developer specializing in <strong>React</strong>,{' '}
+          <strong>Angular</strong>, <strong>Web Components</strong> and building
+          web interfaces with a great user experience. Do you need a website?
         </CustomH3>
         <CtaLink to='/services'>See my services</CtaLink>
       </CustomContainer>
