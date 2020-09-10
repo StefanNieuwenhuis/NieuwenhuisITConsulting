@@ -61,7 +61,7 @@ const ContactForm = () => {
                 type='name'
                 name='name'
                 placeholder='What is your name?'
-                tw='shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
+                tw='shadow appearance-none border rounded w-full py-4 px-5 md:py-2 md:px-3 leading-tight focus:outline-none focus:shadow-outline'
               />
               <ErrorMessage
                 name='name'
@@ -77,7 +77,7 @@ const ContactForm = () => {
                 type='email'
                 name='email'
                 placeholder='What is your email address?'
-                tw='shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
+                tw='shadow appearance-none border rounded w-full py-4 px-5 md:py-2 md:px-3 leading-tight focus:outline-none focus:shadow-outline'
               />
               <ErrorMessage
                 name='email'
@@ -94,7 +94,7 @@ const ContactForm = () => {
                 as='textarea'
                 rows='6'
                 placeholder='How can I help you?'
-                tw='shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
+                tw='shadow appearance-none border rounded w-full py-4 px-5 md:py-2 md:px-3 leading-tight focus:outline-none focus:shadow-outline'
               />
               <ErrorMessage
                 name='message'
