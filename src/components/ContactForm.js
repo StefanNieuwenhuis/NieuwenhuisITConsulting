@@ -1,13 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { navigate } from 'gatsby';
-import Recaptcha from 'react-google-recaptcha';
+
 import tw from 'twin.macro';
 import * as Yup from 'yup';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { CustomH2 } from './CustomHeadings';
-
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
 
 const ContactFormSchema = Yup.object().shape({
   name: Yup.string().required('Please enter your name'),
@@ -18,12 +16,7 @@ const ContactFormSchema = Yup.object().shape({
 });
 
 const ContactForm = () => {
-  const recaptchaEl = useRef(null);
   const formEl = useRef(null);
-  const [recaptcha, setRecaptcha] = useState({});
-
-  const handleRecaptcha = (value) =>
-    setRecaptcha({ 'g-recaptcha-response': value });
 
   return (
     <>
@@ -34,7 +27,7 @@ const ContactForm = () => {
         onSubmit={(values) => {
           fetch('/', {
             method: 'POST',
-            body: { ...values, ...recaptcha },
+            body: { ...values },
           })
             .then(() => navigate(formEl.current.action))
             .catch((err) => console.error(err));
@@ -101,13 +94,7 @@ const ContactForm = () => {
                 tw='text-red-600 mt-2 text-sm'
               />
             </div>
-            <div tw='mb-4'>
-              <Recaptcha
-                ref={recaptchaEl}
-                sitekey={RECAPTCHA_KEY}
-                onChange={handleRecaptcha}
-              />
-            </div>
+
             <div tw='text-right'>
               <button
                 type='submit'
