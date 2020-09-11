@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Front End Development | Nieuwenhuis IT Consulting`,
+    title: `Front End Development | Nieuwenhuis Web Development`,
     description: `I’m a Front End Developer specializing in React, Angular, Web Components and building web interfaces with a great user experience. Do you need a website?`,
     author: 'Stefan Nieuwenhuis',
     keywords: [

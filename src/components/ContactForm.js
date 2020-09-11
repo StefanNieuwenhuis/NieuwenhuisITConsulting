@@ -42,7 +42,7 @@ const ContactForm = () => {
             .catch((err) => console.error(err));
         }}
       >
-        {() => (
+        {({ isSubmitting }) => (
           <Form
             ref={formEl}
             name='Contact Form'
@@ -51,6 +51,7 @@ const ContactForm = () => {
             data-netlify-honeypot='bot-field'
             action='/thank-you'
           >
+            <pre>{JSON.stringify(isSubmitting)}</pre>
             <Field type='hidden' name='form-name' />
             <Field type='hidden' name='bot-field' />
             <div tw='mb-4'>
@@ -108,9 +109,13 @@ const ContactForm = () => {
                 style={{ backgroundColor: '#667eea' }}
                 css={[
                   tw`w-full md:w-auto text-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider`,
+                  isSubmitting && tw`opacity-50 cursor-not-allowed`,
                 ]}
               >
-                Send
+                <span css={[isSubmitting && tw`hidden`]}>Send</span>
+                <span css={[!isSubmitting && tw`hidden`]}>
+                  Sending your message to HQ
+                </span>
               </button>
             </div>
           </Form>

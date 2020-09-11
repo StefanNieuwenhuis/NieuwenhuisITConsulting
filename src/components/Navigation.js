@@ -13,7 +13,7 @@ const Navigation = () => {
     <nav>
       <div tw='container mx-auto px-6 py-2 flex flex-wrap justify-between items-center'>
         <Link to='/' tw='font-bold text-xl md:text-2xl lg:text-4xl flex-1'>
-          Nieuwenhuis IT Consulting
+          Nieuwenhuis Web Development
         </Link>
         <div tw='block lg:hidden flex-initial'>
           <button
