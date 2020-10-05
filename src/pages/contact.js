@@ -1,30 +1,26 @@
 import React from 'react';
-import Layout from '../components/Layout';
 import tw from 'twin.macro';
 
+import Layout from '../components/Layout';
 import SEO from '../components/Seo';
-import Hero from '../components/Hero';
-
-import CustomContainer from '../components/CustomContainer';
+import ContactForm from '../components/ContactForm';
+import { Container, Hero } from '../components/Containers';
 import { CustomH2, CustomH3 } from '../components/CustomHeadings';
 
 import ContactFormIllustration from '../../pixeltrue-support-1.svg';
-import ContactForm from '../components/ContactForm';
 
 const Contact = () => (
   <Layout>
     <SEO title='Contact' />
     <Hero>
-      <CustomContainer>
-        <CustomH2 tw='mb-6 text-white'>Let's talk</CustomH2>
-        <CustomH3 tw='my-4 mb-8 text-white'>
-          I would be happy to help you. Just send me a message about what I can
-          do for you.
-        </CustomH3>
-      </CustomContainer>
+      <CustomH2 tw='mb-6 text-white'>Let's talk</CustomH2>
+      <CustomH3 tw='my-4 mb-8 text-white'>
+        I would be happy to help you. Just send me a message about what I can do
+        for you.
+      </CustomH3>
     </Hero>
 
-    <CustomContainer tw='p-10'>
+    <Container tw='p-10'>
       <div tw='flex items-start  flex-wrap'>
         <div tw='w-full md:w-1/2'>
           <img src={ContactFormIllustration} />
@@ -34,7 +30,7 @@ const Contact = () => (
           <ContactForm />
         </div>
       </div>
-    </CustomContainer>
+    </Container>
   </Layout>
 );
 

@@ -51,7 +51,6 @@ const ContactForm = () => {
             data-netlify-honeypot='bot-field'
             action='/thank-you'
           >
-            <pre>{JSON.stringify(isSubmitting)}</pre>
             <Field type='hidden' name='form-name' />
             <Field type='hidden' name='bot-field' />
             <div tw='mb-4'>
